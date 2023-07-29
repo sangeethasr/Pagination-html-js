@@ -5,6 +5,12 @@ body {
     margin: 20px;
   }
   
+  .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   #pagination {
     display: flex;
     margin-top: 10px;
@@ -23,5 +29,10 @@ body {
   
   #pagination a.active {
     background-color: #e5c78a;
+  }
+
+  #searchPage{
+    height: 30px;
+    width: 30px;
   }
   
