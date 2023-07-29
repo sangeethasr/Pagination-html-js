@@ -51,12 +51,12 @@ let index = 1;
 
 paginationLinkPrev.addEventListener("click", (e) => {
   e.preventDefault();
-  const paginationLink = document.querySelectorAll(".paginationLink");
+  const activePaginationLink = document.querySelectorAll(".displayPaginationLink");
   if (currentIndex !== 0) {
     currentIndex--;
-    paginationLink.forEach((link) => link.classList.remove("activePagination"));
-    paginationLink[currentIndex].classList.add("activePagination");
-    currentPage = paginationLink[currentIndex].innerHTML;
+    activePaginationLink.forEach((link) => link.classList.remove("activePagination"));
+    activePaginationLink[currentIndex].classList.add("activePagination");
+    currentPage = activePaginationLink[currentIndex].innerHTML;
     getInventories(Number(currentPage));
   } else if (currentIndex === 0) {
     if (currentPage > 1) {
@@ -69,13 +69,14 @@ paginationLinkPrev.addEventListener("click", (e) => {
 
 paginationLinkNext.addEventListener("click", (e) => {
   e.preventDefault();
-  if (currentIndex !== paginationLink.length - 1) {
+  const activePaginationLink = document.querySelectorAll(".displayPaginationLink");
+  if (currentIndex !== activePaginationLink.length - 1) {
     currentIndex++;
-    paginationLink.forEach((link) => link.classList.remove("activePagination"));
-    paginationLink[currentIndex].classList.add("activePagination");
-    currentPage = paginationLink[currentIndex].innerText;
+    activePaginationLink.forEach((link) => link.classList.remove("activePagination"));
+    activePaginationLink[currentIndex].classList.add("activePagination");
+    currentPage = activePaginationLink[currentIndex].innerText;
     getInventories(Number(currentPage));
-  } else if (currentIndex === paginationLink.length - 1) {
+  } else if (currentIndex === activePaginationLink.length - 1) {
     if (currentPage < totalPages) {
       index++;
       pagination(totalPages, index);
