@@ -13,26 +13,47 @@ body {
 
   #pagination {
     display: flex;
-    margin-top: 10px;
+    gap: 5px;
+  }
+
+  #paginationContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
   
-  #pagination a, #pagination span {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 5px;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
+  .paginationLink, #paginationLinkPrev , #paginationLinkNext{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 45px;
+    width: 45px;
     text-decoration: none;
-    color: #333;
     cursor: pointer;
+    border: 1px solid #dee2e6;
+    color: #d5d5d5;
   }
   
-  #pagination a.active {
-    background-color: #e5c78a;
+  #paginationLinkPrev{
+    border-radius: 6px 0 0 6px;
+  }
+
+  #paginationLinkNext{
+    border-radius: 0 6px 6px 0;
+  }
+  
+  .paginationLink:hover, #paginationLinkPrev:hover, #paginationLinkNext:hover{
+    background-color: #89bc25;
+    color: #fff;
+  }
+
+  .activePagination{
+    border-color: #89bc25;
+    color: #89bc25;
   }
 
   #searchPage{
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 45px;
   }
   

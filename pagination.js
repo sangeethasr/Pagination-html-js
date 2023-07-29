@@ -21,7 +21,7 @@ function pagination(totalPages, index) {
   }
   document
     .querySelectorAll(".paginationLink")
-    [currentIndex].classList.add("active");
+    [currentIndex].classList.add("activePagination");
   currentPage =
     document.querySelectorAll(".paginationLink")[currentIndex].innerText;
 }
@@ -33,8 +33,8 @@ paginationLink.forEach((link, index) => {
     e.preventDefault();
     currentIndex = index;
     currentPage = link.innerText;
-    paginationLink.forEach((link) => link.classList.remove("active"));
-    link.classList.add("active");
+    paginationLink.forEach((link) => link.classList.remove("activePagination"));
+    link.classList.add("activePagination");
   });
 });
 
@@ -45,8 +45,8 @@ paginationLinkPrev.addEventListener("click", (e) => {
   const paginationLink = document.querySelectorAll(".paginationLink");
   if (currentIndex !== 0) {
     currentIndex--;
-    paginationLink.forEach((link) => link.classList.remove("active"));
-    paginationLink[currentIndex].classList.add("active");
+    paginationLink.forEach((link) => link.classList.remove("activePagination"));
+    paginationLink[currentIndex].classList.add("activePagination");
     currentPage = paginationLink[currentIndex].innerHTML;
   } else if (currentIndex === 0) {
     if (currentPage > 1) {
@@ -62,8 +62,8 @@ paginationLinkNext.addEventListener("click", (e) => {
   e.preventDefault();
   if (currentIndex !== paginationLink.length - 1) {
     currentIndex++;
-    paginationLink.forEach((link) => link.classList.remove("active"));
-    paginationLink[currentIndex].classList.add("active");
+    paginationLink.forEach((link) => link.classList.remove("activePagination"));
+    paginationLink[currentIndex].classList.add("activePagination");
     currentPage = paginationLink[currentIndex].innerText;
   } else if (currentIndex === paginationLink.length - 1) {
     if (currentPage < totalPages) {
