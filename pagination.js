@@ -10,7 +10,7 @@ const getInventories = async (page) => {
 let currentPage = 1;
 let currentIndex = 0;
 
-const totalPages = 11;
+const totalPages = 3;
 
 pagination(totalPages, 1);
 
@@ -94,30 +94,43 @@ function handleKeyPress(event) {
     if (searchPage.value) {
       const searchValue = Number(searchPage.value);
       if (searchValue <= totalPages && searchValue >=1) {
+        currentPage = searchValue;
         getInventories(searchValue);
-        paginationLink.forEach((link) =>
-          link.classList.remove("activePagination")
-        );
-        let borderValue = searchValue - 4;
-        if (borderValue > 0) {
-          searchPagination(borderValue, searchValue);
-        }else if(borderValue <= 0){
-          searchPagination(searchValue, searchValue);
+        if((totalPages<=5)&&(searchValue<=5)){
+          searchPagination(1, totalPages-1, searchValue);
+        }else if((totalPages>5)&&(searchValue>5)){
+          let borderValue = searchValue-4;
+          searchPagination(borderValue, 4, searchValue);
+        }else if((totalPages>5)&&(searchValue<=5)){
+          searchPagination(1, 4, searchValue);
         }
       }
     }
   }
 }
 
-function searchPagination(borderValue, searchValue){
-  for (let i = 0; i <= 4; i++) {
-    paginationLink[i].innerHTML = borderValue;
+function searchPagination(startInnerHtmlValue, endIndex, searchValue){
+  for (let i = 0; i <= endIndex; i++) {
+    paginationLink[i].innerHTML = startInnerHtmlValue;
     paginationLink[i].classList.add("displayPaginationLink");
-    borderValue++;    
+    startInnerHtmlValue++;    
   }
-  paginationLink.forEach((link) => {
+  let flag = false;
+  let activeIndex = 0;
+
+    paginationLink.forEach((link,index) => {
     if (link.innerHTML === searchValue.toString()) {
-      link.classList.add("activePagination");
+      flag = true;
+      activeIndex = index;
+      currentIndex = index;
     }
   });
+
+  if(flag){
+    paginationLink.forEach((link) =>
+    link.classList.remove("activePagination")
+  );
+    paginationLink[activeIndex].classList.add("activePagination");
+  }
+
 }
