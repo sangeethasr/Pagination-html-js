@@ -21,9 +21,16 @@ body {
     align-items: center;
     gap: 5px;
   }
-  
-  .paginationLink, #paginationLinkPrev , #paginationLinkNext{
+
+  #paginationLinkPrev , #paginationLinkNext{
     display: flex;
+  }
+  
+  .paginationLink{
+    display: none;
+  }
+  .paginationLink, #paginationLinkPrev , #paginationLinkNext{
+    /* display: flex; */
     align-items: center;
     justify-content: space-around;
     height: 45px;
@@ -55,5 +62,11 @@ body {
   #searchPage{
     height: 45px;
     width: 45px;
+    border: 1px solid #dee2e6;
+    outline: none;
+    border-radius: 6px;
   }
   
+  .displayPaginationLink{
+    display: flex !important;
+  }
