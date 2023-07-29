@@ -132,6 +132,7 @@ function searchPagination(startInnerHtmlValue, endIndex, searchValue){
     link.classList.remove("activePagination")
   );
     paginationLink[activeIndex].classList.add("activePagination");
+    searchPage.value = "";
   }
 
 }
